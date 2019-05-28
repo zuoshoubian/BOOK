@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>BOOK</title>
+
+
+  			<script> 
+  			 			
+            function checktxt(){
+				var a=document.getElementById("name").value;
+						if(a==null || a==""){
+					document.getElementById("nameDiv").style.display="block";
+					} else {
+					document.getElementById("nameDiv").style.display="none";
+							}
+						
+				var b=document.getElementById("password").value;
+						if(b==null || b==""){
+					document.getElementById("passwordDiv").style.display="block";
+					} else {
+					document.getElementById("passwordDiv").style.display="none";
+							}
+					}
+           
+            
+              function beforeSubmit(){
+            	  var username = document.getElementById("username").value;
+            	  var pwd = document.getElementById("password").value;
+            	  if(username == ''){
+            		  alert("用户名不能为空");
+            		   return false;
+            	  }else{
+            		  document.form.submit();
+            	  }
+            	  if(pwd == ''){
+            		  alert("密码不能为空");
+            		   return false;
+            	  }else{
+            		  document.form.submit();
+            	  }
+            	  
+              }
+            </script>
+</head>
+<body class="container">
+
+	<br>
+	<h1>用户登陆</h1>
+	<div >
+    <form name="form"  action="/toLogin" method="post" onsubmit="return beforeSubmit();">
+        <ul >
+            <li>
+                <label for="username"  class="input-tips2">用户名：</label>
+                <div class="inputOuter2">
+                    <input type="text" id="username" name="username"  onblur="checktxt();" />
+                   <span id="nameDiv" style="display:none">"用户名不能为空"</span>
+                </div>
+            </li>
+            <li>
+                <label for="password" class="input-tips2">密码：</label>
+                <div >
+                    <input type="password" id="password"  name="password"  onblur="checktxt();"/>
+                    <span id="passwordDiv" style="display:none">"密码不能为空"</span>
+                </div>
+            </li>
+     
+            
+            <li>
+                <div >
+                    <input  type="submit" value="登录"/>
+                    <a href="/register" th:href="@{/register}" class="btn btn-info"><input type="button" value="注册"></a>
+                </div>
+               
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+
+</html>

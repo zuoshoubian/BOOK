@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>BOOK</title>
+
+</head>
+<body class="container">
+	<br/>
+	<h1>书架</h1>
+	
+	<div>
+			<a href="/logout"><input type="button" value="注销"></a>
+			<form name="form" action="get" onsubmit="return beforeSubmit();">
+			<input type="text" name="id"  id="id" th:value ="*{id}" style="width: 331px; ">
+			<input type="submit" value="查找">
+			</form>
+			<table border="1" style="width: 400px;">
+			   <thead>
+				
+				<tr>
+					<th>ID</th>
+					<th>书名</th>
+					<th>作者</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="book : ${page.list}" >
+					<td th:text="${book.id}"></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.writer}"></td>
+					<td th:text="${book.introduction}"></td>
+					<td align="right"><a th:href="@{/toUpdate(id=${book.id})}" ><input type="button" value="修改"></a></td>
+					<td><a th:href="@{/delete(id=${book.id})}" ><input type="button" value="删除"></a></td>
+				</tr>
+			</tbody>			
+		</table>		
+		   <br>
+   		   <div>
+                <a th:href="@{?start=1}"><input type="button" value="首页"></a>
+            <th:if test="page.pageNum-1>0">
+                <a th:href="@{?start=${page.pageNum}-1}"><input type="button" value="上一页"></a>
+            </th:if>
+            <th:if test="pageInfo.pageNum+1<page.pages+1">
+                <a th:href="@{?start=${page.pageNum}+1}"><input type="button" value="下一页"></a>
+            </th:if>
+                <a th:href="@{?start=${page.pages}}"><input type="button" value="末页"></a>
+          </div> 
+           <br>
+　　                 <div>当前页/总页数：<a th:text="${page.pageNum}">${page.pageNum}</a>/<a th:text="${page.pages}">${page.pages}</a> </div>
+            <br>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-2 control-label">
+			<a href="/toInsert" th:href="@{/toInsert}" class="btn btn-info"><input type="button" value="添加"></a>
+		</div>
+	</div>
+</body>
+</html>

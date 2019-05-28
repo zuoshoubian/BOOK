@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>BOOK</title>
+			   <script>
+              function beforeSubmit(){
+            	  var username = document.getElementById("username").value;
+            	  var pwd = document.getElementById("password").value;
+            	  var pwd2 = document.getElementById("password2").value;
+            	  if(username == ''){
+            		  alert("用户名不能为空");
+            		   return false;
+            	  }else if(username.length<3|| username.length > 5){
+            		  alert("用户名由3-5个字符组成");
+            		  return false;       
+            		  }
+            	  else if(username != null){
+            		  alert("用户名重复，请重新输入")
+            		  return false;
+            	  }else{
+            		  document.form.submit();
+            	  }
+            	  
+            	  if(pwd == ''){
+            		  alert("密码不能为空");
+            		   return false;
+            	  }else if(pwd.length < 6 || pwd.length > 12){
+            		  alert("密码长度为6-12个字符");
+            		  return false;
+            	  }else if(pwd != pwd2){  
+            		  alert("两次输入密码不一致");
+           		      return false;
+
+            	  }else{
+            		  document.form.submit();
+            	  }           	  
+              }
+            </script>
+</head>
+<body class="container">
+
+	<br>
+	<h1>用户注册</h1>
+	<div >
+    <form name="form"  th:action="@{/toRegister}" method="post" onsubmit="return beforeSubmit();">
+        <ul >
+            <li>
+                <label for="username"  class="input-tips2">请输入用户名：</label>
+                <div class="inputOuter2">
+                    <input type="text" id="username" name="username" th:value="*{userName}" />
+                </div>
+            </li>
+            <li>
+                <label for="password" class="input-tips2">请输入密码：</label>
+                <div >
+                    <input type="password" id="password"  name="password" th:value="*{password}"/>
+                </div>
+            </li>
+               <li>
+                <label for="password2" class="input-tips2">请确认密码：</label>
+                <div >
+                    <input type="password" id="password2"  name="password2" th:value="*{password2}"/>
+                </div>
+            </li>
+            
+
+            <li>
+                <div >
+                    <input type="submit" value="注册"/>
+                    <a href="/login"><input type="button" value="返回"></a>
+                </div>
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+
+</html>

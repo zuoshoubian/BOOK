@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>book</title>
+</head>
+<body class="container">
+<br/>
+<h1>添加书籍</h1>
+<div>
+<form  th:action="@{/insert}" >
+		
+		书名: <input type="text" name="name" th:value="*{name}" /><br>  
+		作者: <input type="text" name="writer" th:value="*{writer}" /><br>
+		介绍: <input type="text" name="introduction" th:value="*{introduction}" /><br>  
+		 
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="确定" class="btn btn-infor" />
+                &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/toInsert" th:href="@{/index}" class="btn btn-info"><input type="button" value="返回"></a>
+            </div>
+ 
+        </div>
+    </form>
+</div>
+</body>
+</html>

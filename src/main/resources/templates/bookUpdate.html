@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>BOOK</title>
+</head>
+<body class="container">
+
+	<br>
+	<h1>修改书籍</h1>
+	<form class="form-horizontal" th:action="@{/update}" th:object="${book}" method="post">
+		<input type="hidden" name="id" th:value="*{id}">
+		<table border="1">
+			<tr>
+				<td>ID</td>
+				<td><input type="text" class="form-control" name="id" 
+					th:value="*{id}" placeholder="id" /></td>
+			</tr>
+			<tr>
+				<td>书名</td>
+				<td><input type="text" class="form-control" name="name"
+					 th:value="*{name}" placeholder="name" /></td>
+			</tr>
+			<tr>
+				<td>作者</td>
+				<td><input type="text" class="form-control" name="writer"
+					 th:value="*{writer}" placeholder="writer" /></td>
+			</tr>
+
+			<tr>
+				<td>介绍</td>
+				<td><input type="text" class="form-control" name="introduction"
+					 th:value="*{introduction}"
+					placeholder="introduction" /></td>
+			</tr>
+		</table>
+			<div class="form-group">
+			<a href="/bookUpdate" th:href="@{/update}" ><input type="submit" value="确定" class="btn btn-infor" ></a>
+			 &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="/toInsert" th:href="@{/index}" ><input type="button" value="返回"></a>
+		    </div>
+	
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>BOOK</title>
+</head>
+<body class="container">
+	<br/>
+	<h1>书架</h1>	
+	<div>	
+			<table border="1" style="width: 400px;">
+			   <thead>
+				
+				<tr>
+					<th>ID</th>
+					<th>书名</th>
+					<th>作者</th>
+					<th>介绍</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="book : ${book}" >
+					<td th:text="${book.id}"></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.writer}"></td>
+					<td th:text="${book.introduction}"></td>
+					<td align="right"><a th:href="@{/toUpdate(id=${book.id})}" ><input type="button" value="修改"></a></td>
+					<td><a th:href="@{/delete(id=${book.id})}" ><input type="button" value="删除"></a></td>
+				</tr>
+			</tbody>			
+		</table>
+		<a th:href="@{/index}" class="btn btn-info"><input type="button"value="返回"></a>
+	</div>
+
+</body>
+</html>
